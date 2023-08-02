@@ -1,0 +1,29 @@
+service: crud-app
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+- serverless-offline
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+  CreateApi:
+    handler: /src/Api/createApi.CreateApi
+    events:
+      - http:
+          path: /createData
+          method: post
+  GetApi:
+    handler: /src/Api/getApi.GetApi
+    events:
+      - http:
+          path: /getData
+          method: get
